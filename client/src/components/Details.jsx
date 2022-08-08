@@ -4,7 +4,7 @@ import { getDetails } from '../actions';
 import { useParams } from 'react-router-dom';
 import Header from './Header';
 
-function Details(props) {
+function Details() {
   const dispatch = useDispatch()
   const { id } = useParams(state => state.detail);
 

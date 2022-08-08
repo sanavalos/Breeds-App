@@ -15,7 +15,7 @@ const allApiTemperaments = async () => {
     const apiUrl = await axios.get('https://api.thedogapi.com/v1/breeds')
     const tempsRepeated = apiUrl.data.map(dog => dog.temperament).toString();
     const tempsArray = tempsRepeated.split(' ').join('').split(",")
-    const setTemperaments = new Set(tempsArray)
+    const setTemperaments = new Set(tempsArray.sort())
     const arrayTemperaments = Array.from(setTemperaments).filter(t => t !== '')
     arrayTemperaments.forEach(t => {
         Temperament.findOrCreate({

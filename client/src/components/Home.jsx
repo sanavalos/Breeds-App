@@ -14,19 +14,24 @@ const Page = styled.div`
         align-items: center;
         flex-direction:row;
         flex-wrap:wrap;
-        margin-left: 5vw;
+        margin: 0 12.5vw;
     }
-    .sortAndFilter{
+    .buttons{
         display:flex;
         width:fit-content;
         flex-direction: column;
         background-color: #ffaa00;
-        height:fit-content;
+        height:40vh;
         position:fixed;
         margin-left: 0.25vw;
         top: 35vh;
-        left: 0;
+        left: 2vw;
         border-radius: 10px;
+        justify-content: space-evenly ;
+    }
+    .section{
+        display:flex;
+        flex-direction: column;
     }
     select{
         margin: 10px;
@@ -38,12 +43,21 @@ const Page = styled.div`
         display:flex;
         flex-direction: row;
     }
+    .reset{
+        padding: 0px 5px;
+        margin: 0px 0.2vh;
+        background-color: #F64F00;
+        border-radius: 6px;
+        color: white;
+        font-size:1.8vh;
+        cursor: pointer;
+    }
 `
 
 function Home() {
     const dispatch = useDispatch()
     const allDogs = useSelector ((state) => state.dogs)
-    const [order, setOrder] = useState('Sorted by API')
+    const [order, setOrder] = useState('')
     const [currentPage, setCurrentPage] = useState(1)
     const [dogsPerPage, setDogsPerPage] = useState(8)
     const indexOfLastDog = currentPage * dogsPerPage
@@ -64,7 +78,8 @@ function Home() {
     const handleClick = (e) => {
         e.preventDefault();
         dispatch(getDogs())
-        setOrder('Sorted by API')
+        setCurrentPage(1)
+        setOrder('All sorts and filters were cleared successfully!')
     }
 
     const handleSortWeight = (e) => {
@@ -84,24 +99,31 @@ function Home() {
     const handleFilterDb = (e) => {
         e.preventDefault();
         dispatch(filterDogsByDb(e.target.value))
+        setCurrentPage(1)
+        setOrder(`Filtered by ${e.target.value}`)
     }
 
 
     const handleFilterTemp = (e) => {
         e.preventDefault();
         dispatch(filterDogsByTemperament(e.target.value))
+        setCurrentPage(1)
+        setOrder(`Filtered by ${e.target.value}`)
+
     }
 
     return (
         <Page>
             <Header/>
             <h1>ALL DOGS ARE GOOD BOYS</h1>
-            <button onClick={ e => {handleClick(e)}}>
-                Clear Sorts and Filters
-            </button>
             
             <div className='content'>
-                <div className='sortAndFilter'>
+                <div className='buttons'>
+                    <button onClick={ e => {handleClick(e)}} className='reset'>
+                        Reset sorts/filters
+                    </button>
+
+                    <div className='section'>
                     <h3>SORT BY</h3>
                     <select onChange={e => handleSortWeight(e)}>
                         <option value='all'> --WEIGHT-- </option>
@@ -114,7 +136,9 @@ function Home() {
                         <option value='descendant'>Descendant Name</option>
                         <option value='ascendant'>Ascendant Name</option>
                     </select>
+                </div>
 
+                <div className='section'>
                     <h3>FILTER BY</h3>
                     <select onChange={(e)=> handleFilterTemp(e)}>
                         <option value='all'>--TEMPERAMENTS--</option>
@@ -128,6 +152,7 @@ function Home() {
                         <option value='api'>API breed</option>
                         <option value='db'>DataBase breed</option>
                     </select>
+                </div>
                 </div>
 
                 <div>

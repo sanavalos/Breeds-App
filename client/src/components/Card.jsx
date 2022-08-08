@@ -4,10 +4,10 @@ import styled from 'styled-components';
 import paw from '../images/dog_paw_art.png'
 
 const Dog = styled.div`
-background-color: red;
-width: 25vw;
-margin: 1.5vh 0;
-box-shadow: 6px 6px 10px 3px #190225;
+  background-color: #ffaa00;
+  max-width: 25vw;
+  margin: 1.5vh 0;
+  box-shadow: 6px 6px 10px 3px #190225;
   .link{
     text-decoration: none;
     color: inherit;
@@ -18,20 +18,18 @@ box-shadow: 6px 6px 10px 3px #190225;
   }
   img{
     height: 40vh;
-    width: 20vw;
+    width: 25vw;
   }
   .info{
-    background-color:yellow;
     display:flex;
     flex-direction: row;
     justify-content: space-between;
   }
   .weight{
-    background-color:blue;
-  width:fit-content;
-  display:flex;
-  flex-direction:column;
-      justify-content: center;
+    width:fit-content;
+    display:flex;
+    flex-direction:column;
+    justify-content: center;
     div{
       border: black 1px solid;
       padding: 0px 5px;
@@ -59,18 +57,18 @@ function Card({image, id, name, temperaments, weight_min, weight_max}) {
     <Dog>
     <NavLink to={`/home/${id}`} className='link'>
       
+        <img src={image ? image : paw} alt={`${name}'s breed example`}/>
         <div className='info'>
           <h1>{name}</h1>
           <div className='weight'>
             <h4>METRICS</h4>
-            <div><span>Max Weight:</span> {weight_max}</div>
             <div><span>Min Weight:</span> {weight_min}</div>
+            <div><span>Max Weight:</span> {weight_max}</div>
           </div>
         </div>
         <Temperaments>{
-          typeof temperaments === 'object' ? `Temperaments: ${temperaments.join(', ')}` : `Temperaments: ${temperaments}`
+          typeof temperaments === 'object' ? `${temperaments.join(', ')}` : `${temperaments}`
         }</Temperaments>
-        <img src={image ? image : paw} alt={`${name}'s breed example`}/>
         </NavLink>
       </Dog>
     

@@ -10,12 +10,13 @@ function Header() {
     height: 8vh;
     display: flex;
     align-items: center;
+
         ul{
             width:100%;
             display: flex;
             list-style: none;
             flex-direction: row;
-            justify-content:left;
+            justify-content: right;
         }
     `
 
@@ -34,6 +35,7 @@ function Header() {
     `
     return (
         <HeaderDiv>
+            <SearchBar/>
             <ul>
                 <li>
                     <StyledLink to="/" ><Buttons>LANDING</Buttons></StyledLink>
@@ -45,7 +47,6 @@ function Header() {
                     <StyledLink to="/create" ><Buttons>CREATE</Buttons></StyledLink>
                 </li>
             </ul>
-            <SearchBar/>
         </HeaderDiv>
     );
 }

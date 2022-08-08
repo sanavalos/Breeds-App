@@ -2,11 +2,15 @@ import axios from 'axios';
 
 export function getDogs(){
     return async function(dispatch){
-        var json = await axios.get('http://localhost:3001/dogs')
-        return dispatch({
-            type: 'GET_DOGS',
-            payload: json.data
-        })
+        try {
+            var json = await axios.get('http://localhost:3001/dogs')
+            return dispatch({
+                type: 'GET_DOGS',
+                payload: json.data
+            })
+        } catch (error) {
+            console.log(`Following error from actions: ${error}`)
+        }
     }
 }
 
@@ -26,18 +30,26 @@ export function getDogsByName(name){
 
 export function getTemperaments(){
     return async function (dispatch) {
-        var json = await axios.get('http://localhost:3001/temperaments')
+        try {
+            var json = await axios.get('http://localhost:3001/temperaments')
             return dispatch ({
                 type: "GET_TEMPERAMENTS",
                 payload: json.data
             })
+        } catch (error) {
+            console.log(`Following error from actions: ${error}`)
+        }
     }
 }
 
 export function postDog(payload){
-    return async function(dispatch) {
-        const json = await axios.post('http://localhost:3001/dogs', payload)
-        return json
+    try {
+        return async function(dispatch) {
+            const json = await axios.post('http://localhost:3001/dogs', payload)
+            return json
+        }
+    } catch (error) {
+        console.log(`Following error from actions: ${error}`)
     }
 }
 

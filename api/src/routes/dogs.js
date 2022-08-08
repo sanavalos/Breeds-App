@@ -10,11 +10,11 @@ const getApiInfo = async () => {
         return {
             id: dog.id,
             name: dog.name,
-            height_min: dog.height.metric.split(' - ')[0],
-            height_max: dog.height.metric.split(' - ')[1],
-            weight_min: dog.weight.metric.split(' - ')[0],
-            weight_max: dog.weight.metric.split(' - ')[1],
-            span: dog.life_span,
+            height_min: dog.height.metric.split(' - ')[0] ? dog.height.metric.split(' - ')[0] : 'Unknown',
+            height_max: dog.height.metric.split(' - ')[1] ? dog.height.metric.split(' - ')[1] : 'Unknown',
+            weight_min: dog.weight.metric.split(' - ')[0] ? dog.weight.metric.split(' - ')[0] : 'Unknown',
+            weight_max: dog.weight.metric.split(' - ')[1] ? dog.weight.metric.split(' - ')[1] : 'Unknown',
+            span: dog.life_span ? dog.life_span : 'Unknown',
             image: dog.image.url,
             temperaments: dog.temperament ? dog.temperament : 'We don\'t really know'
         };

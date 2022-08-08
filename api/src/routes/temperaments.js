@@ -1,6 +1,5 @@
 const { Router } = require('express');
-const axios = require('axios')
-const { Dog, Temperament } = require('../db');
+const { Temperament } = require('../db');
 const router = Router();
 
 router.get('/', async (req,res) => {

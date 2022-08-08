@@ -82,7 +82,8 @@ function rootReducer (state = initialState, action){
                     let dogDb = dog.temperaments.join(', ').toLowerCase().includes(temperament)
                     return dogDb
                 }
-                return true})
+                return true
+            })
             return {
                 ...state,
                 dogs: filter

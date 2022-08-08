@@ -7,14 +7,18 @@ const Bar = styled.div`
   display: flex;
   flex-direction: row;
     input{
-        border-radius: 15px 0px 0px 15px;
-        padding: 8px;
-        font-size: 15px;
-        font-weight: bold;
+      border-radius: 15px 0px 0px 15px;
+      padding: 8px;
+      font-size: 15px;
+      font-weight: bold;
     }
     button{
       cursor: pointer;
       border-radius: 0px 15px 15px 0px;
+    }
+    input, button{
+      border: none;
+      outline-width: 0;
     }
 `
 
@@ -35,7 +39,7 @@ function SearchBar() {
 
   return (
     <Bar>
-        <input type='text' placeholder='Search by name' onChange={ e => handleInputChange(e)}/>
+        <input type='text' placeholder='Search by name...' onChange={ e => handleInputChange(e)}/>
         <button type='submit' onClick={ e => handleSubmit(e)}>SEARCH</button>
     </Bar>
   )
