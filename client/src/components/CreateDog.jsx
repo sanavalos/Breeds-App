@@ -52,7 +52,7 @@ const Content = styled.div`
 
 const DogForm = styled.form`
     background-color: #ffaa00;
-    border-radius: 15px;
+    border-radius: 50px 50px 0 0;
     width: fit-content;
     font-size: 3.5vh;
     label{
@@ -76,6 +76,11 @@ const DogForm = styled.form`
     }
     button{
         width:100%;
+        background-color: #F64F00;
+        border-radius: 6px;
+        color: white;
+        font-size:3vh;
+        cursor: pointer;
     }
     .formBorder{
         margin: 0 2vw;
@@ -168,7 +173,7 @@ function CreateDog() {
                             <label>Life span: </label>
                             <input type='text' value={input.span} name='span' onChange={e => handleChange(e)} className='numbers'/>
                         </div>
-
+                        <br/>
                         <div>
                             <h3>Weight</h3>
                             <label>Minimum: </label>
@@ -198,7 +203,7 @@ function CreateDog() {
                 
             
         </CreateDiv>
-            <ul className='tempsList'>
+            <ul>
                 <li>
                     {input.temperaments.map( t =>
                         <div>

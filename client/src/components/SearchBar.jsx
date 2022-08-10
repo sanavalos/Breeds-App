@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 import { getDogsByName } from '../actions';
 import styled from 'styled-components';
 
@@ -24,6 +25,8 @@ const Bar = styled.div`
 
 function SearchBar() {
     const dispatch = useDispatch()
+    const history = useHistory()
+
     const [name, setName] = useState('')
 
     const handleInputChange = (e) => {
@@ -34,6 +37,7 @@ function SearchBar() {
     const handleSubmit = (e) => {
         e.preventDefault()
         dispatch(getDogsByName(name))
+        history.push('/home')
         setName('')
     }
 

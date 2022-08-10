@@ -10,7 +10,6 @@ function Header() {
     height: 8vh;
     display: flex;
     align-items: center;
-
         ul{
             width:100%;
             display: flex;
@@ -33,6 +32,7 @@ function Header() {
     const StyledLink = styled(NavLink)`
         text-decoration:none;
     `
+    
     return (
         <HeaderDiv>
             <SearchBar/>

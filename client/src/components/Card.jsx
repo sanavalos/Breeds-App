@@ -49,14 +49,14 @@ const Temperaments = styled.div`
 display:flex;
 flex-wrap: wrap;
 justify-content: center;
+padding-bottom: 1vh;
 `
 
 function Card({image, id, name, temperaments, weight_min, weight_max}) {
 
   return (
     <Dog>
-    <NavLink to={`/home/${id}`} className='link'>
-      
+      <NavLink to={`/home/${id}`} className='link'>
         <img src={image ? image : paw} alt={`${name}'s breed example`}/>
         <div className='info'>
           <h1>{name}</h1>
@@ -69,8 +69,8 @@ function Card({image, id, name, temperaments, weight_min, weight_max}) {
         <Temperaments>{
           typeof temperaments === 'object' ? `${temperaments.join(', ')}` : `${temperaments}`
         }</Temperaments>
-        </NavLink>
-      </Dog>
+      </NavLink>
+    </Dog>
     
   )
 }

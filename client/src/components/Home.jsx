@@ -5,9 +5,10 @@ import Header from './Header';
 import Card from './Card';
 import Pagination from './Pagination';
 import styled from 'styled-components';
+import background from '../images/background.jpg'
 
 const Page = styled.div`
-    background-color: gray;
+    background-image: url(${background});
     .cards{
         display:flex;
         justify-content: space-evenly;
@@ -52,6 +53,12 @@ const Page = styled.div`
         font-size:1.8vh;
         cursor: pointer;
     }
+    .setting{
+        font-size: 3vh;
+        width:fit-content;
+        backdrop-filter: blur(10px);
+        margin-left: 43vw;
+    }
 `
 
 function Home() {
@@ -79,7 +86,9 @@ function Home() {
         e.preventDefault();
         dispatch(getDogs())
         setCurrentPage(1)
-        setOrder('All sorts and filters were cleared successfully!')
+        setTimeout(() => {
+            setOrder('All sorts and filters were cleared successfully!')
+        }, 1500);
     }
 
     const handleSortWeight = (e) => {
@@ -109,13 +118,11 @@ function Home() {
         dispatch(filterDogsByTemperament(e.target.value))
         setCurrentPage(1)
         setOrder(`Filtered by ${e.target.value}`)
-
     }
 
     return (
         <Page>
             <Header/>
-            <h1>ALL DOGS ARE GOOD BOYS</h1>
             
             <div className='content'>
                 <div className='buttons'>
@@ -157,7 +164,7 @@ function Home() {
 
                 <div>
                     <Pagination dogsPerPage={dogsPerPage} allDogs={allDogs.length} pagination={pagination}/>
-                    <h3>{order}</h3>
+                    <h3 className='setting'>{order}</h3>
                     <div className='cards'>
                     {
                         currentDogs?.map(dog =>{

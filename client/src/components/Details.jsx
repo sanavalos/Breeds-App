@@ -3,6 +3,50 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getDetails } from '../actions';
 import { useParams } from 'react-router-dom';
 import Header from './Header';
+import paw from '../images/dog_paw_art.png'
+import styled from 'styled-components';
+
+const DetailCard = styled.div`
+  display:flex;
+  flex-direction: row;
+  justify-content:center;
+  align-items:center;
+  background-color:blue;
+  height: 92vh;
+  img{
+    height:30vh;
+  }
+  p, h3{
+    margin: 0;
+  }
+  .measures{
+    display:flex;
+    flex-direction: row;
+    justify-content:center;
+  }
+  .amount{
+    margin: 1.2vh 0;
+    padding: 0 2vw;
+  }
+  .tempsList{
+    list-style-type: none;
+    border-radius: 15px;
+    width: fit-content;
+    font-size:2vh;
+    padding: 0;
+    p{
+      background-color: #ffaa00;
+      border-radius: 10px;
+      border: 1px solid black;
+      display:flex;
+      flex-direction:row;
+      align-items:center;
+      margin: 1vh 0;
+      padding: 0.5vh;
+      width:fit-content;
+    }
+  }
+`
 
 function Details() {
   const dispatch = useDispatch()
@@ -18,25 +62,39 @@ function Details() {
     <div>
       <Header/>
       {
-        myDog.length > 0 ?<div>
-          <h1>Name: {myDog[0].name}</h1>
-
+        myDog.length > 0 ?<DetailCard>
           <div>
-            <p>Minimum Height: {myDog[0].height_min}</p>
-            <p>Maximum Height: {myDog[0].height_max}</p>
+            <h1>Breed/Name: {myDog[0].name}</h1>
+
+            <div className='measures'>
+              <div className='amount'>
+                <h3>Height</h3>
+                <p>Minimum: {myDog[0].height_min}</p>
+                <p>Maximum: {myDog[0].height_max}</p>
+              </div>
+
+              <div className='amount'>
+                <h3>Weight</h3>
+                <p>Minimum: {myDog[0].weight_min}</p>
+                <p>Maximum: {myDog[0].weight_max}</p>
+              </div>
+            </div>
           </div>
 
           <div>
-            <p>Minimum Weight: {myDog[0].weight_min}</p>
-            <p>Maximum Weight: {myDog[0].weight_max}</p>
+            <img src={myDog[0].image ? myDog[0].image : paw} alt={`${myDog[0].name}'s breed example`}></img>
+            <p>Life span: {myDog[0].span}</p>
           </div>
 
-          <p>Life span: {myDog[0].span}</p>
+          <ul>
+            <li className='tempsList'>
+              {
+                !myDog[0].createdInDb ? myDog[0].temperaments.split(', ').map(t => <p>{t}</p>) : myDog[0].temperaments.map( t => <p>{t}</p>)
+              }
+            </li>
+          </ul>
 
-          <p>Temperaments: {!myDog[0].createdInDb ? myDog[0].temperaments : myDog[0].temperaments.map( t => t.name + ', ')}</p>
-        
-          <img src={myDog[0].image} alt={`${myDog[0].name}'s breed example`}></img>
-        </div>
+        </DetailCard>
         :
         setTimeout(() => {
           <h1>Dog not found!</h1>
