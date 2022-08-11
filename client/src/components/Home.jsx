@@ -28,7 +28,7 @@ const Page = styled.div`
         top: 35vh;
         left: 2vw;
         border-radius: 10px;
-        justify-content: space-evenly ;
+        justify-content: space-evenly;
     }
     .section{
         display:flex;
@@ -36,6 +36,8 @@ const Page = styled.div`
     }
     select{
         margin: 10px;
+        outline-width: 0;
+        text-align:center;
     }
     h3{
         margin-bottom: 0;
@@ -43,6 +45,8 @@ const Page = styled.div`
     .content{
         display:flex;
         flex-direction: row;
+        justify-content:center;
+        min-height:92vh;
     }
     .reset{
         padding: 0px 5px;
@@ -55,9 +59,8 @@ const Page = styled.div`
     }
     .setting{
         font-size: 3vh;
-        width:fit-content;
+        width: 100%;
         backdrop-filter: blur(10px);
-        margin-left: 43vw;
     }
 `
 
@@ -95,21 +98,21 @@ function Home() {
         e.preventDefault();
         dispatch(sortDogsByWeight(e.target.value))
         setCurrentPage(1)
-        setOrder(`Sorted by ${e.target.value} weight`)
+        setOrder(e.target.value !== 'all' ? `Sorted by ${e.target.value} weight` : null)
     }
 
     const handleSortName = (e) => {
         e.preventDefault();
         dispatch(sortDogsByName(e.target.value))
         setCurrentPage(1)
-        setOrder(`Sorted by ${e.target.value} name`)
+        setOrder(e.target.value !== 'all' ? `Sorted by ${e.target.value} name` : null)
     }
     
     const handleFilterDb = (e) => {
         e.preventDefault();
         dispatch(filterDogsByDb(e.target.value))
         setCurrentPage(1)
-        setOrder(`Filtered by ${e.target.value}`)
+        setOrder(e.target.value !== 'all' ? `Filtered by ${e.target.value}` : `Showing breeds from API and DB`)
     }
 
 
@@ -117,17 +120,16 @@ function Home() {
         e.preventDefault();
         dispatch(filterDogsByTemperament(e.target.value))
         setCurrentPage(1)
-        setOrder(`Filtered by ${e.target.value}`)
+        setOrder(e.target.value !== 'all' ? `Filtered by ${e.target.value}` : `Showing dogs with all temperaments`)
     }
 
     return (
         <Page>
-            <Header/>
-            
+            <Header showSearch={true}/>
             <div className='content'>
                 <div className='buttons'>
                     <button onClick={ e => {handleClick(e)}} className='reset'>
-                        Reset sorts/filters
+                        Reset search
                     </button>
 
                     <div className='section'>

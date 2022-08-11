@@ -8,6 +8,9 @@ const CreateDiv = styled.div`
     display:flex;
     flex-direction:column;
     align-items: center;
+    p{
+        font-size: 2vh;
+    }
 `
 
 const Content = styled.div`
@@ -85,8 +88,12 @@ const DogForm = styled.form`
     .formBorder{
         margin: 0 2vw;
     }
-
+    .box{
+        margin: 2vh 0px 4vh 0px;
+        text-align:left;
+    }
 `
+
 
 function CreateDog() {
 
@@ -107,14 +114,14 @@ function CreateDog() {
         image: '',
         temperaments:[]
     })
+    
 
     const handleChange = (e) => {
         e.preventDefault()
             setInput({
                 ...input,
-                [e.target.name] : e.target.value
-            }
-        )
+                [e.target.name]: e.target.value
+            })
     }
 
     const handleSelect = (e) => {
@@ -148,32 +155,34 @@ function CreateDog() {
 
     return (
         <div>
-        <Header/>
+        <Header showSearch={false}/>
         <Content>
         <CreateDiv>
                 <h1>CREATE YOUR OWN BUDDY</h1>
-                <p>Tell us a little bit about him...</p>
+                <p>Tell us a little bit more about him...</p>
                 <DogForm onSubmit={e => handleSubmit(e)}>
                     <div className='formBorder'>
-                        <div>
-                            <label>Breed: </label>
-                            <input type='text' value={input.name} name='name' onChange={e => handleChange(e)} />
-                        </div>
+                        <div className='box'>
+                            <div>
+                                <label>Breed: </label>
+                                <input type='text' value={input.name} name='name' onChange={e => handleChange(e)} />
+                            </div>
 
-                        <div>
-                            <label>Temperaments: </label>
-                            <select onChange={(e)=> handleSelect(e)}>
-                                { temperamentsApi.map( t => (
-                                    <option value={t.name}>{t.name}</option>
-                                ))}
-                            </select>
-                        </div>
+                            <div>
+                                <label>Temperaments: </label>
+                                <select onChange={(e)=> handleSelect(e)}>
+                                    { temperamentsApi.map( t => (
+                                        <option value={t.name}>{t.name}</option>
+                                    ))}
+                                </select>
+                            </div>
 
-                        <div>
-                            <label>Life span: </label>
-                            <input type='text' value={input.span} name='span' onChange={e => handleChange(e)} className='numbers'/>
+                            <div>
+                                <label>Life span: </label>
+                                <input type='text' value={input.span} name='span' onChange={e => handleChange(e)} className='numbers'/>
+                            </div>
                         </div>
-                        <br/>
+                        
                         <div>
                             <h3>Weight</h3>
                             <label>Minimum: </label>

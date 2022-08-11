@@ -7,6 +7,7 @@ import styled from 'styled-components';
 const Bar = styled.div`
   display: flex;
   flex-direction: row;
+  margin-left: 42vw;
     input{
       border-radius: 15px 0px 0px 15px;
       padding: 8px;
@@ -36,8 +37,8 @@ function SearchBar() {
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        dispatch(getDogsByName(name))
         history.push('/home')
+        dispatch(getDogsByName(name))
         setName('')
     }
 

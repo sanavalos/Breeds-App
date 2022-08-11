@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
 import SearchBar from './SearchBar';
 
-function Header() {
+function Header({showSearch}) {
     const HeaderDiv = styled.div`
     background-color: #ffaa00;
     width:100%;
@@ -35,7 +35,7 @@ function Header() {
     
     return (
         <HeaderDiv>
-            <SearchBar/>
+            {showSearch && <SearchBar/>}
             <ul>
                 <li>
                     <StyledLink to="/" ><Buttons>LANDING</Buttons></StyledLink>

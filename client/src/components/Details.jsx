@@ -14,10 +14,19 @@ const DetailCard = styled.div`
   background-color:blue;
   height: 92vh;
   img{
-    height:30vh;
+    height:50vh;
+  }
+  h1{
+    font-size: 5vh;
   }
   p, h3{
     margin: 0;
+  }
+  p{
+    font-size: 3.2vh;
+  }
+  h3{
+    font-size: 4vh;
   }
   .measures{
     display:flex;
@@ -98,7 +107,7 @@ function Details() {
         :
         setTimeout(() => {
           <h1>Dog not found!</h1>
-        }, 1000)
+        }, 1500)
       } 
     </div>
   )
