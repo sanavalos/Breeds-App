@@ -4,6 +4,8 @@ import { getDogs, getTemperaments, sortDogsByWeight, sortDogsByName, filterDogsB
 import Header from './Header';
 import Card from './Card';
 import Pagination from './Pagination';
+import ScrollUp from './ScrollUp';
+import NoDog from './NoDog';
 import styled from 'styled-components';
 import background from '../images/background.jpg'
 
@@ -59,8 +61,15 @@ const Page = styled.div`
     }
     .setting{
         font-size: 3vh;
-        width: 100%;
-        backdrop-filter: blur(10px);
+        width: fit-content;
+        background-color: #00000099;
+        padding: 0 10px;
+        color:#ffaa00;
+    }
+    .box{
+        display:flex;
+        justify-content: center;
+        width:100%
     }
 `
 
@@ -84,6 +93,13 @@ function Home() {
         dispatch(getDogs())
         dispatch(getTemperaments())
     }, [dispatch])
+
+    useEffect(() => {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    }, [order, currentPage])
 
     const handleClick = (e) => {
         e.preventDefault();
@@ -115,13 +131,13 @@ function Home() {
         setOrder(e.target.value !== 'all' ? `Filtered by ${e.target.value}` : `Showing breeds from API and DB`)
     }
 
-
     const handleFilterTemp = (e) => {
         e.preventDefault();
         dispatch(filterDogsByTemperament(e.target.value))
         setCurrentPage(1)
         setOrder(e.target.value !== 'all' ? `Filtered by ${e.target.value}` : `Showing dogs with all temperaments`)
     }
+
 
     return (
         <Page>
@@ -166,17 +182,21 @@ function Home() {
 
                 <div>
                     <Pagination dogsPerPage={dogsPerPage} allDogs={allDogs.length} pagination={pagination}/>
-                    <h3 className='setting'>{order}</h3>
+                    <div className='box'>
+                        <h3 className='setting'>{order}</h3>
+                    </div>
                     <div className='cards'>
+                    
                     {
-                        currentDogs?.map(dog =>{
+                        currentDogs.length > 0 ? currentDogs.map(dog =>{
                             return <Card key={dog.id} id={dog.id} image={dog.image} name={dog.name} temperaments={dog.temperaments} weight_min={dog.weight_min} weight_max={dog.weight_max}/>
-                        })
+                        }) : <NoDog/>
                     }
                     </div>
                     <Pagination dogsPerPage={dogsPerPage} allDogs={allDogs.length} pagination={pagination}/>
                 </div>
             </div>
+            <ScrollUp/>
         </Page>
     )
 }

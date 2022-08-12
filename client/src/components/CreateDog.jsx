@@ -58,12 +58,16 @@ const DogForm = styled.form`
     border-radius: 50px 50px 0 0;
     width: fit-content;
     font-size: 3.5vh;
+    .minMax{
+        display:flex;
+        justify-content:space-around;
+    }
     label{
         text-align:left;
     }
     h3{
         font-size:3.25vh;
-        margin: 1vh 0 0 0;
+        margin: 3vh 0 0 0;
     }
     .numbers{
         width:4vw;
@@ -89,7 +93,7 @@ const DogForm = styled.form`
         margin: 0 2vw;
     }
     .box{
-        margin: 2vh 0px 4vh 0px;
+        margin: 2vh 0px 0px 0px;
         text-align:left;
     }
 `
@@ -178,27 +182,39 @@ function CreateDog() {
                             </div>
 
                             <div>
-                                <label>Life span: </label>
+                                <label>Life Span: </label>
                                 <input type='text' value={input.span} name='span' onChange={e => handleChange(e)} className='numbers'/>
                             </div>
                         </div>
                         
                         <div>
                             <h3>Weight</h3>
-                            <label>Minimum: </label>
-                            <input type='number' value={input.weight_min} name='weight_min' onChange={e => handleChange(e)} className='numbers'/>
+                            <div className='minMax'>
+                                <div>
+                                    <label>Min: </label>
+                                    <input type='number' value={input.weight_min} name='weight_min' onChange={e => handleChange(e)} className='numbers'/>
+                                </div>
 
-                            <label>Maximum: </label>
-                            <input type='number' value={input.weight_max} name='weight_max' onChange={e => handleChange(e)} className='numbers'/>
+                                <div>
+                                    <label>Max: </label>
+                                    <input type='number' value={input.weight_max} name='weight_max' onChange={e => handleChange(e)} className='numbers'/>
+                                </div>
+                            </div>
                         </div>
 
                         <div>
                             <h3>Height</h3>
-                            <label>Minimum: </label>
-                            <input type='number' value={input.height_min} name='height_min' onChange={e => handleChange(e)} className='numbers'/>
-
-                            <label>Maximum: </label>
-                            <input type='number' value={input.height_max} name='height_max' onChange={e => handleChange(e)} className='numbers'/>
+                            <div className='minMax'>
+                                <div>
+                                    <label>Min: </label>
+                                    <input type='number' value={input.height_min} name='height_min' onChange={e => handleChange(e)} className='numbers'/>
+                                </div>
+                                
+                                <div>
+                                    <label>Max: </label>
+                                    <input type='number' value={input.height_max} name='height_max' onChange={e => handleChange(e)} className='numbers'/>
+                                </div>
+                            </div>
                         </div>
                         <br/>
                         <div>

@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getDetails } from '../actions';
 import { useParams } from 'react-router-dom';
 import Header from './Header';
+import NotFound from './NotFound';
 import paw from '../images/dog_paw_art.png'
 import styled from 'styled-components';
 
@@ -69,45 +70,45 @@ function Details() {
 
   return (
     <div>
-      <Header/>
       {
-        myDog.length > 0 ?<DetailCard>
-          <div>
-            <h1>Breed/Name: {myDog[0].name}</h1>
+        myDog.length > 0 ?
+        <div>
+          <Header/>
+          <DetailCard>
+            <div>
+              <h1>Breed: {myDog[0].name}</h1>
 
-            <div className='measures'>
-              <div className='amount'>
-                <h3>Height</h3>
-                <p>Minimum: {myDog[0].height_min}</p>
-                <p>Maximum: {myDog[0].height_max}</p>
-              </div>
+              <div className='measures'>
+                <div className='amount'>
+                  <h3>Height</h3>
+                  <p>Minimum: {myDog[0].height_min}</p>
+                  <p>Maximum: {myDog[0].height_max}</p>
+                </div>
 
-              <div className='amount'>
-                <h3>Weight</h3>
-                <p>Minimum: {myDog[0].weight_min}</p>
-                <p>Maximum: {myDog[0].weight_max}</p>
+                <div className='amount'>
+                  <h3>Weight</h3>
+                  <p>Minimum: {myDog[0].weight_min}</p>
+                  <p>Maximum: {myDog[0].weight_max}</p>
+                </div>
               </div>
             </div>
-          </div>
 
-          <div>
-            <img src={myDog[0].image ? myDog[0].image : paw} alt={`${myDog[0].name}'s breed example`}></img>
-            <p>Life span: {myDog[0].span}</p>
-          </div>
+            <div>
+              <img src={myDog[0].image ? myDog[0].image : paw} alt={`${myDog[0].name}'s breed example`}></img>
+              <p>Life Span: {myDog[0].span}</p>
+            </div>
 
-          <ul>
-            <li className='tempsList'>
-              {
-                !myDog[0].createdInDb ? myDog[0].temperaments.split(', ').map(t => <p>{t}</p>) : myDog[0].temperaments.map( t => <p>{t}</p>)
-              }
-            </li>
-          </ul>
-
-        </DetailCard>
+            <ul>
+              <li className='tempsList'>
+                {
+                  !myDog[0].createdInDb ? myDog[0].temperaments.split(', ').map(t => <p>{t}</p>) : myDog[0].temperaments.map( t => <p>{t}</p>)
+                }
+              </li>
+            </ul>
+          </DetailCard>
+        </div>
         :
-        setTimeout(() => {
-          <h1>Dog not found!</h1>
-        }, 1500)
+          <NotFound/>
       } 
     </div>
   )
