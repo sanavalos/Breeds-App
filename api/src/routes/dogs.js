@@ -38,7 +38,6 @@ const getDBInfo = async () => {
         for (let j = 0; j < dogs[i].temperaments.length; j++) {
             temperaments.push(dogs[i].temperaments[j].name)
         }
-    // change array to string, maybe
         dogs[i].temperaments = temperaments
         temperaments = []
     }

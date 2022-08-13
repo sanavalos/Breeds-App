@@ -11,7 +11,7 @@ function rootReducer (state = initialState, action){
                 ...state,
                 dogs: action.payload,
                 dogsCopy: action.payload
-        }
+            }
 
         case 'GET_DOGS_NAMES':
             return{

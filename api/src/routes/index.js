@@ -4,7 +4,7 @@ const dogs = require('./dogs.js')
 const temperaments = require('./temperaments.js')
 
 const axios = require ('axios');
-const { Dog, Temperament } = require('../db');
+const { Temperament } = require('../db');
 
 const router = Router();
 

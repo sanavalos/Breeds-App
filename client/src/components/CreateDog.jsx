@@ -12,7 +12,28 @@ const CreateDiv = styled.div`
     p{
         font-size: 2vh;
     }
+    .error{
+        margin: 0;
+        padding: 1vh 1.5vw;
+        width:100%;
+        text-decoration: underline;
+        color: #de0000;
+        font-weight: 900;
+        font-size: 3vh;
+        border: 1px solid #ff0000;
+    }
+    .success{
+        margin: 0;
+        padding: 1vh 1.5vw;
+        width:100%;
+        text-decoration: underline;
+        color: #1e961e;
+        font-weight: 900;
+        font-size: 3vh;
+        border: 1px solid #1e961e;
+    }
 `
+
 
 const Content = styled.div`
     display:flex;
@@ -84,11 +105,14 @@ const DogForm = styled.form`
     }
     button{
         width:100%;
-        background-color: #F64F00;
+        background-color: #1e961e;
         border-radius: 6px;
         color: white;
         font-size:3vh;
         cursor: pointer;
+    }
+    .buttonError{
+        background-color:#FC440F
     }
     .formBorder{
         margin: 0 2vw;
@@ -112,15 +136,36 @@ function CreateDog() {
 
     const [input, setInput] = useState({
         name:'',
-        height_min:'',
-        height_max:'',
+        span:'',
         weight_min:'',
         weight_max:'',
-        span:'',
+        height_min:'',
+        height_max:'',
         image: '',
         temperaments:[]
     })
     
+    const [error, setError] = useState('')
+
+    useEffect(()=>{
+        if(input.name === ''){
+            setError('You must name the breed')
+        }
+        else if(input.temperaments.length === 0){
+            setError('You must pick at least 1 temperamnt')
+        }
+        else if(input.span === '' || !input.span.includes('-')){
+            setError('Need a realistic number')
+        }
+        else if(input.weight_min === '' || input.weight_max === '' || input.weight_min >= input.weight_max){
+            setError('Something is wrong with the weight')
+        }
+        else if(input.height_min === '' || input.height_max === '' || input.height_min >= input.height_max){
+            setError('Something is wrong with the height')          
+        }
+        else {
+            setError('')}
+    }, [input])
 
     const handleChange = (e) => {
         e.preventDefault()
@@ -146,6 +191,10 @@ function CreateDog() {
 
     const handleSubmit = (e) => {
         e.preventDefault()
+        if(error !== ''){
+            alert('Check the form for errors.')
+            return true
+        }
         dispatch(postDog(input))
         setInput({
             name:'',
@@ -166,6 +215,7 @@ function CreateDog() {
         <Content>
         <CreateDiv>
                 <h1>CREATE YOUR OWN BUDDY</h1>
+                {error ? <h3 className='error'>Oops! {error}</h3> : <h3 className='success'>You're good to go!</h3> }
                 <p>Tell us a little bit more about him...</p>
                 <DogForm onSubmit={e => handleSubmit(e)}>
                     <div className='formBorder'>
@@ -226,9 +276,8 @@ function CreateDog() {
                         </div>
 
                     </div>
-                        <button type='submit'>Create breed</button>
+                        {!error ? <button type='submit'>Create breed</button> : <button className='buttonError'>Complete the form!</button> }
                 </DogForm>
-                
             
         </CreateDiv>
             <ul>
