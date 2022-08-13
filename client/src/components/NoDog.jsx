@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 const EmptyCard = styled.div`
-    background-color: #ffaa00;
+    background-color: #FFAA00;
     max-width: 25vw;
     margin-top: 20vh;
     padding: 1.5vh;

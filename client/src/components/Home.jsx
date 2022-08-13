@@ -23,7 +23,7 @@ const Page = styled.div`
         display:flex;
         width:fit-content;
         flex-direction: column;
-        background-color: #ffaa00;
+        background-color: #FFAA00;
         height:40vh;
         position:fixed;
         margin-left: 0.25vw;
@@ -59,12 +59,16 @@ const Page = styled.div`
         font-size:1.8vh;
         cursor: pointer;
     }
+    .reset:hover{
+        text-transform:uppercase;
+        font-weight: 600;
+    }
     .setting{
         font-size: 3vh;
         width: fit-content;
         background-color: #00000099;
         padding: 0 10px;
-        color:#ffaa00;
+        color:#FFAA00;
     }
     .box{
         display:flex;

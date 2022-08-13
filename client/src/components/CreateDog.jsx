@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';                
 import { getTemperaments, postDog } from '../actions';
+import { useHistory } from 'react-router-dom';
 import Header from './Header';
 import styled from 'styled-components';
 
@@ -26,7 +27,7 @@ const Content = styled.div`
         margin-left: 2vw;
         li{
             div{
-                background-color: #ffaa00;
+                background-color: #FFAA00;
                 border-radius: 10px;
                 border: 1px solid black;
                 display:flex;
@@ -54,7 +55,7 @@ const Content = styled.div`
 `
 
 const DogForm = styled.form`
-    background-color: #ffaa00;
+    background-color: #FFAA00;
     border-radius: 50px 50px 0 0;
     width: fit-content;
     font-size: 3.5vh;
@@ -102,6 +103,7 @@ const DogForm = styled.form`
 function CreateDog() {
 
     const dispatch = useDispatch()
+    const history = useHistory()
     const temperamentsApi = useSelector((state) =>state.temperaments)
 
     useEffect(() => {
@@ -144,7 +146,7 @@ function CreateDog() {
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        dispatch( postDog(input))
+        dispatch(postDog(input))
         setInput({
             name:'',
             height_min:'',
@@ -155,6 +157,7 @@ function CreateDog() {
             image: '',
             temperaments:[]
         })
+        history.push('/home')
     }
 
     return (

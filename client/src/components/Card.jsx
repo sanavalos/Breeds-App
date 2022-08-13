@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import paw from '../images/dog_paw_art.png'
 
 const Dog = styled.div`
-  background-color: #ffaa00;
+  background-color: #FFAA00;
   max-width: 25vw;
   margin: 1.5vh 0;
   box-shadow: 6px 6px 10px 3px #190225;

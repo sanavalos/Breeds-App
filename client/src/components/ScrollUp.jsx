@@ -9,6 +9,7 @@ const GoTop = styled.div`
     }
 
     .goUp {
+        font-family: 'Fredoka One', cursive;
         position: fixed;
         bottom: 6vh;
         right: 5vw;

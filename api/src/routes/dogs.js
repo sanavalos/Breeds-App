@@ -16,7 +16,7 @@ const getApiInfo = async () => {
             weight_max: dog.weight.metric.split(' - ')[1] ? dog.weight.metric.split(' - ')[1] : 'Unknown',
             span: dog.life_span ? dog.life_span : 'Unknown',
             image: dog.image.url,
-            temperaments: dog.temperament ? dog.temperament : 'We don\'t really know'
+            temperaments: dog.temperament ? dog.temperament : 'Temperament is unknown'
         };
     });
     return apiInfo

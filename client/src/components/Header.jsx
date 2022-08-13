@@ -5,11 +5,12 @@ import SearchBar from './SearchBar';
 
 function Header({showSearch}) {
     const HeaderDiv = styled.div`
-    background-color: #ffaa00;
+    background-color: #FFAA00;
     width:100%;
     height: 8vh;
     display: flex;
     align-items: center;
+    font-family: 'Fredoka One', cursive;
         ul{
             width:100%;
             display: flex;
@@ -24,7 +25,7 @@ function Header({showSearch}) {
         border-radius: 10px;
         padding: 8px;
         margin: 0 1vw;
-        font-size: 15px;
+        font-size: 17px;
         color: white;
         font-weight: bold;
     `
@@ -37,9 +38,6 @@ function Header({showSearch}) {
         <HeaderDiv>
             {showSearch && <SearchBar/>}
             <ul>
-                <li>
-                    <StyledLink to="/" ><Buttons>LANDING</Buttons></StyledLink>
-                </li>
                 <li>
                     <StyledLink to="/home" ><Buttons>HOME</Buttons></StyledLink>
                 </li>

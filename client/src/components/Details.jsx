@@ -45,7 +45,7 @@ const DetailCard = styled.div`
     font-size:2vh;
     padding: 0;
     p{
-      background-color: #ffaa00;
+      background-color: #FFAA00;
       border-radius: 10px;
       border: 1px solid black;
       display:flex;

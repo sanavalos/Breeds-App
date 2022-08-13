@@ -25,12 +25,12 @@ function rootReducer (state = initialState, action){
                 temperaments: action.payload
             }
 
-        case "POST_DOG":
+        case 'POST_DOG':
             return{
                 ...state
             }
         
-        case "GET_BY_ID":
+        case 'GET_BY_ID':
             return {
                 ...state,
                 details: action.payload

@@ -8,7 +8,7 @@ const ErrorPage = styled.div`
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  background-color: #ffaa00;
+  background-color: #FFAA00;
   height:100vh;
   h1{
     font-size:6vh;
