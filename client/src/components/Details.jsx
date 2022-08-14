@@ -15,7 +15,8 @@ const DetailCard = styled.div`
   background-color:blue;
   height: 92vh;
   img{
-    height:50vh;
+    max-height: 50vh;
+    max-width: 35vw;
   }
   h1{
     font-size: 5vh;
@@ -71,37 +72,37 @@ function Details() {
   return (
     <div>
       {
-        myDog.length > 0 ?
+        myDog.id ?
         <div>
           <Header/>
           <DetailCard>
             <div>
-              <h1>Breed: {myDog[0].name}</h1>
+              <h1>Breed: {myDog.name}</h1>
 
               <div className='measures'>
                 <div className='amount'>
                   <h3>Height</h3>
-                  <p>Minimum: {myDog[0].height_min}</p>
-                  <p>Maximum: {myDog[0].height_max}</p>
+                  <p>Minimum: {myDog.height_min}</p>
+                  <p>Maximum: {myDog.height_max}</p>
                 </div>
 
                 <div className='amount'>
                   <h3>Weight</h3>
-                  <p>Minimum: {myDog[0].weight_min}</p>
-                  <p>Maximum: {myDog[0].weight_max}</p>
+                  <p>Minimum: {myDog.weight_min}</p>
+                  <p>Maximum: {myDog.weight_max}</p>
                 </div>
               </div>
             </div>
 
             <div>
-              <img src={myDog[0].image ? myDog[0].image : paw} alt={`${myDog[0].name}'s breed example`}></img>
-              <p>Life Span: {myDog[0].span}</p>
+              <img src={myDog.image ? myDog.image : paw} alt={`${myDog.name}'s breed example`}></img>
+              <p>Life Span: {myDog.span}</p>
             </div>
 
             <ul>
               <li className='tempsList'>
                 {
-                  !myDog[0].createdInDb ? myDog[0].temperaments.split(', ').map(t => <p>{t}</p>) : myDog[0].temperaments.map( t => <p>{t}</p>)
+                  !myDog.createdInDb ? myDog.temperaments.split(', ').map(t => <p>{t}</p>) : myDog.temperaments.map( t => <p>{t}</p>)
                 }
               </li>
             </ul>

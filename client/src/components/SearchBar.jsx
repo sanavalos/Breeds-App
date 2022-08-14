@@ -44,7 +44,7 @@ function SearchBar() {
 
   return (
     <Bar>
-        <input type='text' placeholder='Search by name...' onChange={ e => handleInputChange(e)}/>
+        <input type='text' placeholder='Search by breed...' onChange={ e => handleInputChange(e)}/>
         <button type='submit' onClick={ e => handleSubmit(e)}>SEARCH</button>
     </Bar>
   )

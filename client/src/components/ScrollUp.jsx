@@ -13,7 +13,7 @@ const GoTop = styled.div`
         position: fixed;
         bottom: 6vh;
         right: 5vw;
-        font-size: 5vh;
+        font-size: 4vh;
         background: #F64F00;
         color: white;
         cursor: pointer;
@@ -46,7 +46,7 @@ function ScrollUp() {
     <GoTop>
         <div className="container">
             {showButton && (
-                <button onClick={scrollToTop} className="goUp">Top</button>
+                <button onClick={scrollToTop} className="goUp">TOP</button>
             )}
         </div>
     </GoTop>

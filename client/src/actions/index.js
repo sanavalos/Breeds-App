@@ -87,10 +87,31 @@ export function getDetails(id){
             var json = await axios.get(`http://localhost:3001/dogs/${id}`)
             return dispatch({
                 type: 'GET_BY_ID',
-                payload: json.data
+                payload: json.data[0]
             })
         } catch (error) {
             console.log(`Following error from actions: ${error}`)
         }
+    }
+}
+
+export function addFavorite(id){
+    return async function(dispatch){
+        try {
+            var json = await axios.get(`http://localhost:3001/dogs/${id}`)
+            return dispatch({
+                type: 'ADD_FAVORITE',
+                payload: json.data[0]
+            })
+        } catch (error) {
+            console.log(`Following error from actions: ${error}`)
+        }
+    }
+}
+
+export function filterDogsFavorite(payload){
+    return {
+        type: 'FILTER_FAVORITES',
+        payload
     }
 }

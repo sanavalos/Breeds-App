@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getDogs, getTemperaments, sortDogsByWeight, sortDogsByName, filterDogsByDb, filterDogsByTemperament } from '../actions';
+import { getDogs, getTemperaments, sortDogsByWeight, sortDogsByName, filterDogsByDb, filterDogsByTemperament, filterDogsFavorite } from '../actions';
 import Header from './Header';
 import Card from './Card';
 import Pagination from './Pagination';
@@ -82,7 +82,7 @@ function Home() {
     const allDogs = useSelector ((state) => state.dogs)
     const [order, setOrder] = useState('')
     const [currentPage, setCurrentPage] = useState(1)
-    const [dogsPerPage, setDogsPerPage] = useState(8)
+    const dogsPerPage = 8
     const indexOfLastDog = currentPage * dogsPerPage
     const indexOfFirstDog = indexOfLastDog - dogsPerPage
     const currentDogs = allDogs.slice(indexOfFirstDog, indexOfLastDog)
@@ -105,7 +105,7 @@ function Home() {
         });
     }, [order, currentPage])
 
-    const handleClick = (e) => {
+    const handleClear = (e) => {
         e.preventDefault();
         dispatch(getDogs())
         setCurrentPage(1)
@@ -142,13 +142,19 @@ function Home() {
         setOrder(e.target.value !== 'all' ? `Filtered by ${e.target.value}` : `Showing dogs with all temperaments`)
     }
 
+    const handleFilterFav = (e) => {
+        e.preventDefault();
+        dispatch(filterDogsFavorite(e.target.value))
+        setCurrentPage(1)
+        setOrder(e.target.value !== 'all' ? `Filtered by ${e.target.value}` : `Showing dogs with all temperaments`)
+    }
 
     return (
         <Page>
             <Header showSearch={true}/>
             <div className='content'>
                 <div className='buttons'>
-                    <button onClick={ e => {handleClick(e)}} className='reset'>
+                    <button onClick={ e => {handleClear(e)}} className='reset'>
                         Reset search
                     </button>
 
@@ -177,9 +183,15 @@ function Home() {
                     </select>
 
                     <select onChange={e => handleFilterDb(e)}>
-                        <option value='all'>--ALL BREEDS--</option>
-                        <option value='api'>API breed</option>
-                        <option value='db'>DataBase breed</option>
+                        <option value='all'>--CREATION--</option>
+                        <option value='api'>API Breed</option>
+                        <option value='db'>DataBase Breed</option>
+                    </select>
+
+                    <select onChange={e => handleFilterFav(e)}>
+                        <option value='all'>--FAVORITISM--</option>
+                        <option value='favorites'>Favorites</option>
+                        <option value='common'>No Favorites</option>
                     </select>
                 </div>
                 </div>
@@ -190,7 +202,6 @@ function Home() {
                         <h3 className='setting'>{order}</h3>
                     </div>
                     <div className='cards'>
-                    
                     {
                         currentDogs.length > 0 ? currentDogs.map(dog =>{
                             return <Card key={dog.id} id={dog.id} image={dog.image} name={dog.name} temperaments={dog.temperaments} weight_min={dog.weight_min} weight_max={dog.weight_max}/>

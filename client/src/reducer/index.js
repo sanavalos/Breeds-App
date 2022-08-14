@@ -2,7 +2,8 @@ const initialState = {
     dogs: [],
     dogsCopy: [],
     temperaments: [],
-    details: []
+    details: [],
+    favorites: []
 }
 function rootReducer (state = initialState, action){
     switch(action.type){
@@ -87,6 +88,22 @@ function rootReducer (state = initialState, action){
             return {
                 ...state,
                 dogs: filter
+            }
+        
+        case 'ADD_FAVORITE':
+            const allFavorites = [...state.favorites, action.payload]
+            const uniqueFavorites = [...new Set(allFavorites.map(JSON.stringify))].map(JSON.parse);
+            return {
+                ...state,
+                favorites: uniqueFavorites
+            }
+
+        case 'FILTER_FAVORITES':
+            const copyAllDogs = state.dogsCopy;
+            const filteredFav = action.payload === 'all' ? copyAllDogs : action.payload === 'favorites' ? state.favorites : copyAllDogs;
+            return{
+                ...state,
+                dogs: filteredFav
             }
         
         default:

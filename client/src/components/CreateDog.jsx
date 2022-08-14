@@ -164,7 +164,8 @@ function CreateDog() {
             setError('Something is wrong with the height')          
         }
         else {
-            setError('')}
+            setError('')
+        }
     }, [input])
 
     const handleChange = (e) => {
@@ -221,13 +222,13 @@ function CreateDog() {
                     <div className='formBorder'>
                         <div className='box'>
                             <div>
-                                <label>Breed: </label>
-                                <input type='text' value={input.name} name='name' onChange={e => handleChange(e)} />
+                                <label htmlFor='name'>Breed: </label>
+                                <input type='text' value={input.name} id='name' name='name' onChange={e => handleChange(e)} />
                             </div>
 
                             <div>
-                                <label>Temperaments: </label>
-                                <select onChange={(e)=> handleSelect(e)}>
+                                <label htmlFor='temperaments'>Temperaments: </label>
+                                <select onChange={(e)=> handleSelect(e)} id='temperaments'>
                                     { temperamentsApi.map( t => (
                                         <option value={t.name}>{t.name}</option>
                                     ))}
@@ -235,8 +236,8 @@ function CreateDog() {
                             </div>
 
                             <div>
-                                <label>Life Span: </label>
-                                <input type='text' value={input.span} name='span' onChange={e => handleChange(e)} className='numbers'/>
+                                <label htmlFor='span'>Life Span: </label>
+                                <input type='text' value={input.span} id='span' name='span' onChange={e => handleChange(e)} className='numbers'/>
                             </div>
                         </div>
                         
@@ -271,8 +272,8 @@ function CreateDog() {
                         </div>
                         <br/>
                         <div>
-                            <label>Image: </label>
-                            <input type='text' value={input.image} name='image' onChange={e => handleChange(e)} />
+                            <label htmlFor='image'>Image: </label>
+                            <input type='text' value={input.image} id='image' name='image' onChange={e => handleChange(e)} />
                         </div>
 
                     </div>

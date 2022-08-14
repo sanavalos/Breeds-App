@@ -44,6 +44,9 @@ function Header({showSearch}) {
                 <li>
                     <StyledLink to="/create" ><Buttons>CREATE</Buttons></StyledLink>
                 </li>
+                <li>
+                    <StyledLink to="/favorites" ><Buttons>FAVORITES</Buttons></StyledLink>
+                </li>
             </ul>
         </HeaderDiv>
     );
