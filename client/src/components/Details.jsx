@@ -100,11 +100,11 @@ function Details() {
             </div>
 
             <ul>
-              <li className='tempsList'>
+              
                 {
-                  !myDog.createdInDb ? myDog.temperaments.split(', ').map(t => <p>{t}</p>) : myDog.temperaments.map( t => <p>{t}</p>)
+                  !myDog.createdInDb ? myDog.temperaments.split(', ').map(t => <li className='tempsList' key={t}><p>{t}</p></li>) : myDog.temperaments.map( t => <li className='tempsList' key={t}><p>{t}</p></li>)
                 }
-              </li>
+              
             </ul>
           </DetailCard>
         </div>

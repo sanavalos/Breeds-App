@@ -230,7 +230,7 @@ function CreateDog() {
                                 <label htmlFor='temperaments'>Temperaments: </label>
                                 <select onChange={(e)=> handleSelect(e)} id='temperaments'>
                                     { temperamentsApi.map( t => (
-                                        <option value={t.name}>{t.name}</option>
+                                        <option value={t.name} key={t.name}>{t.name}</option>
                                     ))}
                                 </select>
                             </div>

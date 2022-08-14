@@ -13,13 +13,12 @@ const Dog = styled.div`
   margin: 1.5vh 0;
   box-shadow: 6px 6px 10px 3px #190225;
   button{
-    bottom: 0px;
-    height:30%;
+    height:fit-content;
     background: none;
     color: white;
     border: none;
-    padding: 0 5px;
-    margin: 5px;
+    padding: 3px 5px;
+    margin-left: 5px;
     cursor: pointer;
     outline: inherit;
     background-color: #F64F00;
@@ -91,7 +90,7 @@ function Card({image, id, name, temperaments, weight_min, weight_max, favorite})
         <div className='info'>
           <div className='name'>
             <h1>{name}</h1>
-            {favorite ? <img src={heart}/> : <button onClick={() => handleFavorite()}>Add to fav</button>}
+            {favorite ? <img src={heart} alt='favorite heart'/> : <button onClick={() => handleFavorite()}>Add to fav</button>}
           </div>
           <div className='weight'>
             <h4>METRICS</h4>

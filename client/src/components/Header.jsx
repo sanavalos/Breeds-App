@@ -3,8 +3,7 @@ import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
 import SearchBar from './SearchBar';
 
-function Header({showSearch}) {
-    const HeaderDiv = styled.div`
+const HeaderDiv = styled.div`
     background-color: #FFAA00;
     width:100%;
     height: 8vh;
@@ -33,6 +32,8 @@ function Header({showSearch}) {
     const StyledLink = styled(NavLink)`
         text-decoration:none;
     `
+
+function Header({showSearch}) {
     
     return (
         <HeaderDiv>

@@ -18,6 +18,15 @@ const PagNumbers = styled.div`
         color: white;
         cursor: pointer;
         font-family: 'Fredoka One', cursive;
+        button{
+            background: none;
+            color: inherit;
+            border: none;
+            padding: 0;
+            font: inherit;
+            cursor: pointer;
+            outline: inherit;
+        }
     }
     li:hover{
         border: 2px solid black;
@@ -40,7 +49,7 @@ function Pagination({dogsPerPage, allDogs, pagination}) {
                 {pageNumbers &&
                 pageNumbers.map( pageNumber => (
                         <li key={pageNumber}>
-                            <a onClick={() => pagination(pageNumber)}>{pageNumber}</a>
+                            <button onClick={() => pagination(pageNumber)}>{pageNumber}</button>
                         </li>
                 ))
                 }

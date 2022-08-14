@@ -98,6 +98,11 @@ function Home() {
         dispatch(getTemperaments())
     }, [dispatch])
 
+
+    useEffect(()=>{
+        setCurrentPage(1)
+    }, [allDogs])
+
     useEffect(() => {
         window.scrollTo({
             top: 0,
@@ -108,7 +113,7 @@ function Home() {
     const handleClear = (e) => {
         e.preventDefault();
         dispatch(getDogs())
-        setCurrentPage(1)
+        // setCurrentPage(1)
         setTimeout(() => {
             setOrder('All sorts and filters were cleared successfully!')
         }, 1500);
@@ -131,21 +136,18 @@ function Home() {
     const handleFilterDb = (e) => {
         e.preventDefault();
         dispatch(filterDogsByDb(e.target.value))
-        setCurrentPage(1)
         setOrder(e.target.value !== 'all' ? `Filtered by ${e.target.value}` : `Showing breeds from API and DB`)
     }
 
     const handleFilterTemp = (e) => {
         e.preventDefault();
         dispatch(filterDogsByTemperament(e.target.value))
-        setCurrentPage(1)
         setOrder(e.target.value !== 'all' ? `Filtered by ${e.target.value}` : `Showing dogs with all temperaments`)
     }
 
     const handleFilterFav = (e) => {
         e.preventDefault();
         dispatch(filterDogsFavorite(e.target.value))
-        setCurrentPage(1)
         setOrder(e.target.value !== 'all' ? `Filtered by ${e.target.value}` : `Showing dogs with all temperaments`)
     }
 
@@ -178,7 +180,7 @@ function Home() {
                     <select onChange={(e)=> handleFilterTemp(e)}>
                         <option value='all'>--TEMPERAMENTS--</option>
                         { temperamentsApi.map( t => (
-                            <option value={t.name}>{t.name}</option>
+                            <option value={t.name} key={t.name}>{t.name}</option>
                         ))}
                     </select>
 
