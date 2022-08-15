@@ -35,23 +35,23 @@ const PagNumbers = styled.div`
 `
 
 
-function Pagination({dogsPerPage, allDogs, pagination}) {
+function Pagination({ dogsPerPage, allDogs, pagination }) {
     const pageNumbers = []
 
-    for (let i = 1; i <= Math.ceil(allDogs/dogsPerPage); i++) {
-        pageNumbers.push(i)        
+    for (let i = 1; i <= Math.ceil(allDogs / dogsPerPage); i++) {
+        pageNumbers.push(i)
     }
 
-    
+
     return (
         <PagNumbers>
             <ul>
                 {pageNumbers &&
-                pageNumbers.map( pageNumber => (
+                    pageNumbers.map(pageNumber => (
                         <li key={pageNumber}>
                             <button onClick={() => pagination(pageNumber)}>{pageNumber}</button>
                         </li>
-                ))
+                    ))
                 }
             </ul>
         </PagNumbers>

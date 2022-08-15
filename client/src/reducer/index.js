@@ -97,14 +97,6 @@ function rootReducer (state = initialState, action){
                 ...state,
                 favorites: uniqueFavorites
             }
-
-        case 'FILTER_FAVORITES':
-            const copyAllDogs = state.dogsCopy;
-            const filteredFav = action.payload === 'all' ? copyAllDogs : action.payload === 'favorites' ? state.favorites : copyAllDogs;
-            return{
-                ...state,
-                dogs: filteredFav
-            }
         
         default:
             return state;

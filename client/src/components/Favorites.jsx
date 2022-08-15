@@ -12,7 +12,6 @@ const Page = styled.div`
     .cards{
         display:flex;
         justify-content: space-evenly;
-        align-items: center;
         flex-direction:row;
         flex-wrap:wrap;
         margin: 15vh 12.5vw;
@@ -76,7 +75,7 @@ const Page = styled.div`
 `
 
 function Favorites() {
-    const favoriteDogs = useSelector ((state) => state.favorites)
+    const favoriteDogs = useSelector((state) => state.favorites)
 
     useEffect(() => {
         window.scrollTo({
@@ -87,19 +86,19 @@ function Favorites() {
 
     return (
         <Page>
-        <Header showSearch={false}/>
+            <Header showSearch={false} />
             <div className='content'>
                 <div>
                     <div className='cards'>
-                    {
-                        favoriteDogs.length > 0 ? favoriteDogs.map(dog =>{
-                            return <Card key={dog.id} id={dog.id} image={dog.image} name={dog.name} temperaments={dog.temperaments} weight_min={dog.weight_min} weight_max={dog.weight_max} favorite={true}/>
-                        }) : <NoDog/>
-                    }
+                        {
+                            favoriteDogs.length > 0 ? favoriteDogs.map(dog => {
+                                return <Card key={dog.id} id={dog.id} image={dog.image} name={dog.name} temperaments={dog.temperaments} weight_min={dog.weight_min} weight_max={dog.weight_max} favorite={true} />
+                            }) : <NoDog />
+                        }
                     </div>
                 </div>
             </div>
-            <ScrollUp/>
+            <ScrollUp />
         </Page>
     )
 }

@@ -104,10 +104,3 @@ export function addFavorite(id){
         }
     }
 }
-
-export function filterDogsFavorite(payload){
-    return {
-        type: 'FILTER_FAVORITES',
-        payload
-    }
-}

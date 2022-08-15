@@ -13,8 +13,8 @@ const EmptyCard = styled.div`
 function NoDog() {
   return (
     <EmptyCard>
-        <h1>No dog has been found</h1>
-        <h3>Try your luck again!</h3>
+      <h1>No dog has been found</h1>
+      <h3>Try your luck again!</h3>
     </EmptyCard>
   )
 }

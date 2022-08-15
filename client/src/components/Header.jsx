@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
 import SearchBar from './SearchBar';
+import face from '../images/dog_face.png'
 
 const HeaderDiv = styled.div`
     background-color: #FFAA00;
@@ -9,9 +10,9 @@ const HeaderDiv = styled.div`
     height: 8vh;
     display: flex;
     align-items: center;
+    justify-content: space-between;
     font-family: 'Fredoka One', cursive;
         ul{
-            width:100%;
             display: flex;
             list-style: none;
             flex-direction: row;
@@ -19,7 +20,7 @@ const HeaderDiv = styled.div`
         }
     `
 
-    const Buttons = styled.span`
+const Buttons = styled.span`
         background-color: #F64F00;
         border-radius: 10px;
         padding: 8px;
@@ -27,17 +28,20 @@ const HeaderDiv = styled.div`
         font-size: 17px;
         color: white;
         font-weight: bold;
+        img{
+            max-height: 3vh;
+        }
     `
-    
-    const StyledLink = styled(NavLink)`
+
+const StyledLink = styled(NavLink)`
         text-decoration:none;
     `
 
-function Header({showSearch}) {
-    
+function Header({ showSearch }) {
+
     return (
         <HeaderDiv>
-            {showSearch && <SearchBar/>}
+            {showSearch ? <SearchBar/> : <StyledLink to="/" ><Buttons> LANDING<img src={face} alt='favorite heart'/> </Buttons></StyledLink>}
             <ul>
                 <li>
                     <StyledLink to="/home" ><Buttons>HOME</Buttons></StyledLink>

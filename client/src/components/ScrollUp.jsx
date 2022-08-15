@@ -41,15 +41,15 @@ function ScrollUp() {
             behavior: 'smooth'
         });
     };
-    
+
     return (
-    <GoTop>
-        <div className="container">
-            {showButton && (
-                <button onClick={scrollToTop} className="goUp">TOP</button>
-            )}
-        </div>
-    </GoTop>
+        <GoTop>
+            <div className="container">
+                {showButton && (
+                    <button onClick={scrollToTop} className="goUp">TOP</button>
+                )}
+            </div>
+        </GoTop>
     )
 }
 
