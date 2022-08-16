@@ -99,6 +99,14 @@ function Home() {
         setCurrentPage(pageNumber);
     };
 
+    const [isDisplayed, setIsDisplayed] = useState(false);
+
+    useEffect(() => {
+        setTimeout(() => {
+        setIsDisplayed(true);
+        }, 1500);
+    }, []);
+
     useEffect(() => {
         dispatch(getDogs());
         dispatch(getTemperaments());
@@ -237,11 +245,9 @@ function Home() {
                                     />
                                 );
                             })
-                        ) : (
-                            setTimeout(() => {
-                                <NoDog />
-                            }, 3000)
-                        )}
+                        ) : 
+                            isDisplayed && <NoDog />
+                        }
                     </div>
                     <Pagination
                         dogsPerPage={dogsPerPage}

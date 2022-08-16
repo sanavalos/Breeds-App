@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import Header from './Header';
 import Card from './Card';
@@ -77,6 +77,14 @@ const Page = styled.div`
 function Favorites() {
     const favoriteDogs = useSelector((state) => state.favorites)
 
+    const [isDisplayed, setIsDisplayed] = useState(false);
+
+    useEffect(() => {
+        setTimeout(() => {
+        setIsDisplayed(true);
+        }, 1500);
+    }, []);
+    
     useEffect(() => {
         window.scrollTo({
             top: 0,
@@ -93,7 +101,8 @@ function Favorites() {
                         {
                             favoriteDogs.length > 0 ? favoriteDogs.map(dog => {
                                 return <Card key={dog.id} id={dog.id} image={dog.image} name={dog.name} temperaments={dog.temperaments} weight_min={dog.weight_min} weight_max={dog.weight_max} favorite={true} />
-                            }) : <NoDog />
+                            }) : 
+                                isDisplayed && <NoDog />
                         }
                     </div>
                 </div>

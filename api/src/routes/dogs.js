@@ -4,24 +4,28 @@ const {API_KEY} = process.env;
 const { Dog, Temperament } = require('../db');
 const router = Router();
 
-const getApiInfo = async () => {
-    const apiUrl = await axios.get(`https://api.thedogapi.com/v1/breeds?api_key=${API_KEY}`)
-    const apiInfo = await apiUrl.data.map( dog => {
 
-        return {
-            id: dog.id,
-            name: dog.name,
-            height_min: dog.height.metric.split(' - ')[0] ? dog.height.metric.split(' - ')[0] : 'Unknown',
-            height_max: dog.height.metric.split(' - ')[1] ? dog.height.metric.split(' - ')[1] : 'Unknown',
-            weight_min: dog.weight.metric.split(' - ')[0] ? dog.weight.metric.split(' - ')[0] : 'Unknown',
-            weight_max: dog.weight.metric.split(' - ')[1] ? dog.weight.metric.split(' - ')[1] : 'Unknown',
-            span: dog.life_span ? dog.life_span : 'Unknown',
-            image: dog.image.url,
-            temperaments: dog.temperament ? dog.temperament : 'Temperament is unknown'
-        };
-    });
+const getApiInfo = async () => {
+    const apiData = new Promise(function(resolve, reject) {
+        resolve(axios.get(`https://api.thedogapi.com/v1/breeds?api_key=${API_KEY}`))
+        reject('Error in promise')
+    })
+    const apiMap = await apiData
+    const apiInfo = apiMap.data.map( dog => {
+    return {
+        id: dog.id,
+        name: dog.name,
+        height_min: dog.height.metric.split(' - ')[0] ? dog.height.metric.split(' - ')[0] : 'Unknown',
+        height_max: dog.height.metric.split(' - ')[1] ? dog.height.metric.split(' - ')[1] : 'Unknown',
+        weight_min: dog.weight.metric.split(' - ')[0] ? dog.weight.metric.split(' - ')[0] : 'Unknown',
+        weight_max: dog.weight.metric.split(' - ')[1] ? dog.weight.metric.split(' - ')[1] : 'Unknown',
+        span: dog.life_span ? dog.life_span : 'Unknown',
+        image: dog.image.url,
+        temperaments: dog.temperament ? dog.temperament : 'Temperament is unknown'
+    };
+    })
     return apiInfo
-}
+};
 
 const getDBInfo = async () => {
     let dogs = await Dog.findAll({
