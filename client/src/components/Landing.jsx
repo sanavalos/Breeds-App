@@ -25,14 +25,63 @@ const Container = styled.div`
   .button{
     margin-top: 45vh;
     margin-left: 12vw;
-    font-size: 6vh;
-    border: 2px solid black;
-    border-radius: 10px;
     text-decoration: none;
-    color: white;
-    background-color: #F64F00;
-    height: fit-content;
   }
+  .buttonEffect{
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    p:hover {
+      color: black;
+    }
+    p:hover span {
+      transform: translateY(0) scale(2);
+    }
+    p {
+      --c: #F64F00;
+      color: var(--c);
+      font-size: 3vh;
+      border: 0.3em solid var(--c);
+      border-radius: 0.5em;
+      width: 12em;
+      height: 3em;
+      text-transform: uppercase;
+      font-weight: bold;
+      font-family: sans-serif;
+      letter-spacing: 0.1em;
+      text-align: center;
+      line-height: 3em;
+      position: relative;
+      overflow: hidden;
+      z-index: 1;
+      transition: 0.5s;
+      margin: 1em;
+    span {
+      position: absolute;
+      width: 25%;
+      height: 100%;
+      background-color: var(--c);
+      transform: translateY(150%);
+      border-radius: 50%;
+      left: calc((var(--n) - 1) * 25%);
+      transition: 0.5s;
+      transition-delay: calc((var(--n) - 1) * 0.1s);
+      z-index: -1;
+      }
+    span:nth-child(1) {
+    --n: 1;
+    }
+    span:nth-child(2) {
+        --n: 2;
+    }
+    span:nth-child(3) {
+        --n: 3;
+    }
+    span:nth-child(4) {
+        --n: 4;
+    }
+  }
+}
 `
 
 function Landing() {
@@ -46,7 +95,12 @@ function Landing() {
           BOYS</h1>
       </div>
       <NavLink to='/home' className='button'>
-        <span>Join the pack!</span>
+        <div className='buttonEffect'>
+              <p>
+                JOIN THE PACK
+                <span></span><span></span><span></span><span></span>
+              </p>
+        </div>
       </NavLink>
       <img src={landing} alt='dog landing' />
     </Container>

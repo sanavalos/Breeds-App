@@ -124,12 +124,12 @@ function Home() {
     }, [order, currentPage]);
 
     const handleClear = (e) => {
-        e.preventDefault();
-        dispatch(getDogs());
+        e.preventDefault()
+        window.location.reload(true);
         setTimeout(() => {
             setOrder("All sorts and filters were cleared successfully!");
         }, 1500);
-    };
+    }
 
     const handleSortWeight = (e) => {
         e.preventDefault();
@@ -173,15 +173,15 @@ function Home() {
         );
     };
 
+
+
     return (
         <Page>
             <Header showSearch={true} />
             <div className="content">
                 <div className="buttons">
                     <button
-                        onClick={(e) => {
-                            handleClear(e);
-                        }}
+                        onClick={(e) => handleClear(e)}
                         className="reset"
                     >
                         Reset search
@@ -190,15 +190,15 @@ function Home() {
                     <div className="section">
                         <h3>SORT BY</h3>
                         <select onChange={(e) => handleSortWeight(e)}>
-                            <option value="all"> --WEIGHT-- </option>
-                            <option value="descendant">Descendant Weight</option>
+                            <option value=""> --WEIGHT-- </option>
                             <option value="ascendant">Ascendant Weight</option>
+                            <option value="descendant">Descendant Weight</option>
                         </select>
 
                         <select onChange={(e) => handleSortName(e)}>
-                            <option value="all"> --NAME-- </option>
-                            <option value="descendant">Descendant Name</option>
+                            <option value=""> --NAME-- </option>
                             <option value="ascendant">Ascendant Name</option>
+                            <option value="descendant">Descendant Name</option>
                         </select>
                     </div>
 

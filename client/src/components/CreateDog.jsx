@@ -4,6 +4,8 @@ import { getTemperaments, postDog } from '../actions';
 import { useHistory } from 'react-router-dom';
 import Header from './Header';
 import styled from 'styled-components';
+import background from "../images/background.jpg";
+
 
 const CreateDiv = styled.div`
     display:flex;
@@ -32,13 +34,25 @@ const CreateDiv = styled.div`
         font-size: 3vh;
         border: 1px solid #1e961e;
     }
+    .headForm{
+        display:flex;
+        flex-direction:column;
+        background-color: #FFAA00;
+        border-radius: 10px;
+        align-items:center;
+        margin: 2vh 0;
+        padding: 0.5vh 2vw;
+        width:fit-content;
+    }
 `
 
 
 const Content = styled.div`
-    display:flex;
+    background-image: url(${background});
+    height: 92vh;
+    display: flex;
     align-items: center;
-    justify-content:center;
+    justify-content: center;
     ul{
         list-style-type: none;
         border-radius: 15px;
@@ -164,7 +178,7 @@ function CreateDog() {
         else if (input.temperaments.length === 0) {
             setError('You must pick at least 1 temperamnt')
         }
-        else if(input.span.includes('-') && Number(input.span.split('-')[0]) === '' ? true : false) {
+        else if(input.span.includes('-') && input.span.split('-')[0] === '' ? true : false) {
             setError('Life span must be a positive number')
         }
         else if(input.span.includes('-') ? Number(input.span.split('-')[0]) > Number(input.span.split('-')[1]) : false) {
@@ -228,9 +242,11 @@ function CreateDog() {
             <Header showSearch={false} />
             <Content>
                 <CreateDiv>
-                    <h1>CREATE YOUR OWN BUDDY</h1>
-                    {error ? <h3 className='error'>Oops! {error}</h3> : <h3 className='success'>You're good to go!</h3>}
-                    <p>Tell us a little bit more about him...</p>
+                    <div className='headForm'>
+                        <h1>CREATE YOUR OWN BUDDY</h1>
+                        {error ? <h3 className='error'>Oops! {error}</h3> : <h3 className='success'>You're good to go!</h3>}
+                        <p>Tell us a little bit more about him...</p>
+                    </div>
                     <DogForm onSubmit={e => handleSubmit(e)}>
                         <div className='formBorder'>
                             <div className='box'>
