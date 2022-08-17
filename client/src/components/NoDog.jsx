@@ -1,22 +1,13 @@
-import React from 'react';
-import styled from 'styled-components';
-
-const EmptyCard = styled.div`
-    background-color: #FFAA00;
-    max-width: 25vw;
-    margin-top: 20vh;
-    padding: 1.5vh;
-    box-shadow: 6px 6px 10px 3px #190225;
-
-`
+import React from "react";
+import { NoDogStyle } from "./Styles";
 
 function NoDog() {
   return (
-    <EmptyCard>
+    <NoDogStyle>
       <h1>No dog has been found</h1>
       <h3>Try your luck again!</h3>
-    </EmptyCard>
-  )
+    </NoDogStyle>
+  );
 }
 
-export default NoDog
+export default NoDog;

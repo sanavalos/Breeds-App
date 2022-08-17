@@ -1,37 +1,10 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { useHistory } from 'react-router-dom';
 import { getDogsByName } from '../actions';
-import styled from 'styled-components';
-
-const Bar = styled.div`
-  display: flex;
-  flex-direction: row;
-  margin-left: 2vw;
-  input{
-    border-radius: 15px 0px 0px 15px;
-    padding: 8px;
-    font-size: 15px;
-    font-weight: bold;
-  }
-  button{
-    cursor: pointer;
-    border-radius: 0px 15px 15px 0px;
-  }
-  input, button{
-    border: none;
-    outline-width: 0;
-  }
-  span{
-    margin-left: 0.5vw;
-    color: red;
-    align-self:center;
-  }
-`
+import { SearchStyle } from './Styles';
 
 function SearchBar() {
   const dispatch = useDispatch()
-  const history = useHistory()
 
   const [name, setName] = useState('')
   const [errors, setErrors] = useState('')
@@ -43,7 +16,6 @@ function SearchBar() {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    history.push('/home')
     if(name.length < 3){
       setErrors('Search is way too short')
       setTimeout(() => {
@@ -56,11 +28,11 @@ function SearchBar() {
   }
 
   return (
-    <Bar>
+    <SearchStyle>
       <input type='text' placeholder='Search by breed...' onChange={e => handleInputChange(e)} />
       <button type='submit' onClick={e => handleSubmit(e)}>SEARCH</button>
       {errors && <span>{errors}</span>}
-    </Bar>
+    </SearchStyle>
   )
 }
 
