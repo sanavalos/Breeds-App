@@ -112,13 +112,13 @@ function Home() {
           <div className="section">
             <h3>SORT BY</h3>
             <select onChange={(e) => handleSortWeight(e)}>
-              <option value=""> --WEIGHT-- </option>
+              <option value="all"> --WEIGHT-- </option>
               <option value="ascendant">Ascendant Weight</option>
               <option value="descendant">Descendant Weight</option>
             </select>
 
             <select onChange={(e) => handleSortName(e)}>
-              <option value=""> --NAME-- </option>
+              <option value="all"> --NAME-- </option>
               <option value="ascendant">Ascendant Name</option>
               <option value="descendant">Descendant Name</option>
             </select>
@@ -136,7 +136,7 @@ function Home() {
             </select>
 
             <select onChange={(e) => handleFilterDb(e)}>
-              <option value="all">--CREATION--</option>
+              <option value="all">--API & DB--</option>
               <option value="api">API Breed</option>
               <option value="db">DataBase Breed</option>
             </select>

@@ -87,6 +87,7 @@ export const LandingStyle = styled.div`
 //HOME
 export const HomeStyle = styled.div`
   background-image: url(${background});
+  font-family: "Raleway", sans-serif;
   .cards {
     display: flex;
     justify-content: space-evenly;
@@ -194,6 +195,7 @@ export const CreateContent = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  font-family: "Raleway", sans-serif;
   ul {
     list-style-type: none;
     border-radius: 15px;
@@ -403,6 +405,7 @@ export const DetailsStyle = styled.div`
   align-items: center;
   background-image: url(${background});
   height: 92vh;
+  font-family: "Raleway", sans-serif;
   .borderDetails {
     display: flex;
     flex-direction: row;
@@ -471,6 +474,7 @@ export const NotFoundStyle = styled.div`
   align-items: center;
   background-color: #ffaa00;
   height: 100vh;
+  font-family: "Raleway", sans-serif;
   h1 {
     font-size: 6vh;
     margin: 0;
@@ -551,6 +555,7 @@ export const NoDogStyle = styled.div`
   margin-top: 20vh;
   padding: 1.5vh;
   box-shadow: 6px 6px 10px 3px #190225;
+  font-family: "Raleway", sans-serif;
 `;
 
 //CARD

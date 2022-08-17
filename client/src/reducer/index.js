@@ -38,7 +38,9 @@ function rootReducer(state = initialState, action) {
       };
 
     case "SORT_BY_WEIGHT":
+     const copyWeight = state.dogs;
       const sortedWeight =
+      action.payload === "all" ? copyWeight :
         action.payload === "ascendant"
           ? state.dogs.sort((a, b) => {
               return parseInt(a.weight_min) - parseInt(b.weight_min);
@@ -52,7 +54,9 @@ function rootReducer(state = initialState, action) {
       };
 
     case "SORT_BY_NAME":
+     const copyName = state.dogs;
       const sortedName =
+      action.payload === "all" ? copyName :
         action.payload === "ascendant"
           ? state.dogs.sort((a, b) => {
               return a.name.toLowerCase() < b.name.toLowerCase() ? -1 : 1;
