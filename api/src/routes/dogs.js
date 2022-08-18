@@ -58,7 +58,7 @@ const getAllDogs = async () => {
 
 
 router.get('/', async (req, res) => {
-    const {name} = req.query
+    const { name } = req.query
     try {
         let dogsTotal = await getAllDogs()
         if(name){
@@ -75,14 +75,18 @@ router.get('/', async (req, res) => {
 router.post('/', async (req,res) => {
     let { name, height_min,height_max, weight_min, weight_max, span, temperaments, image, createdInDb } = req.body
     try {
-        let dogCreated = await Dog.create({
-            name, height_min, height_max, weight_min, weight_max, span: `${span} years`, temperaments, image, createdInDb
-        })
-        let temperamentDb = await Temperament.findAll({
-            where: { name: temperaments}
-        })
-        dogCreated.addTemperament(temperamentDb)
-        res.status(200).send('Dog created successfully!')
+     if(req.body){
+      let dogCreated = await Dog.create({
+       name, height_min, height_max, weight_min, weight_max, span: `${span} years`, temperaments, image, createdInDb
+      })
+      let temperamentDb = await Temperament.findAll({
+          where: { name: temperaments}
+      })
+      dogCreated.addTemperament(temperamentDb)
+      res.status(200).send('Dog created successfully!')
+     } else {
+      res.status(400).json({error: 'Body is empty!'})
+     }
     } catch (error) {
         res.status(400).json({error: error.message})
     }
