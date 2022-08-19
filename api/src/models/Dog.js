@@ -1,4 +1,4 @@
-const { DataTypes, UUID } = require('sequelize');
+const { DataTypes } = require('sequelize');
 
 module.exports = (sequelize) => {
   sequelize.define('dog', {

@@ -6,12 +6,8 @@ const router = Router();
 
 
 const getApiInfo = async () => {
-    const apiData = new Promise(function(resolve, reject) {
-        resolve(axios.get(`https://api.thedogapi.com/v1/breeds?api_key=${API_KEY}`))
-        reject('Error in promise')
-    })
-    const apiMap = await apiData
-    const apiInfo = apiMap.data.map( dog => {
+    const apiData =  await (axios.get(`https://api.thedogapi.com/v1/breeds?api_key=${API_KEY}`))
+    const apiInfo = apiData.data.map( dog => {
     return {
         id: dog.id,
         name: dog.name,

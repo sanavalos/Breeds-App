@@ -55,7 +55,7 @@ function Details() {
                   src={myDog.image ? myDog.image : paw}
                   alt={`${myDog.name}'s breed example`}
                 ></img>
-                <p>Life Span: {myDog.span}</p>
+                { myDog.span === '' ? <p>Life Span: {myDog.span}</p>: null}
               </div>
 
               <ul>

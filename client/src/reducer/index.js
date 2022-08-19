@@ -3,7 +3,7 @@ const initialState = {
   dogsCopy: [],
   temperaments: [],
   details: [],
-  favorites: [],
+  favorites: []
 };
 function rootReducer(state = initialState, action) {
   switch (action.type) {

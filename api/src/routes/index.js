@@ -11,12 +11,8 @@ router.use('/dogs', dogs)
 router.use('/temperaments', temperaments)
 
 const allApiTemperaments = async () => {
-    const apiData = new Promise(function(resolve, reject) {
-        resolve(axios.get(`https://api.thedogapi.com/v1/breeds?api_key=${API_KEY}`))
-        reject('Error in promise')
-    })
-    const apiMap = await apiData
-    const tempsRepeated = apiMap.data.map(dog => dog.temperament).toString();
+    const apiData = await (axios.get(`https://api.thedogapi.com/v1/breeds?api_key=${API_KEY}`))
+    const tempsRepeated = apiData.data.map(dog => dog.temperament).toString();
     const tempsArray = tempsRepeated.split(' ').join('').split(",")
     const setTemperaments = new Set(tempsArray.sort())
     const arrayTemperaments = Array.from(setTemperaments).filter(t => t !== '')
