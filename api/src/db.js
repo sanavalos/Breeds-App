@@ -9,7 +9,7 @@ const sequelize = new Sequelize(
   {
     logging: false,
     native: false,
-    port: "0.0.0.0",
+    port: Number("0.0.0.0"),
   }
 );
 const basename = path.basename(__filename);
