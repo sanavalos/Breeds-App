@@ -19,7 +19,7 @@ export function getDogs() {
 export function getDogsByName(name) {
   return async function (dispatch) {
     try {
-      var json = await axios.get(`${REACT_APP_API}}/dogs?name=${name}`);
+      var json = await axios.get(`${REACT_APP_API}/dogs?name=${name}`);
       return dispatch({
         type: "GET_DOGS_NAMES",
         payload: json.data,
