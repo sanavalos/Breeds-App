@@ -2,10 +2,12 @@ import axios from "axios";
 require("dotenv").config();
 const { REACT_APP_API } = process.env;
 
+axios.defaults.baseURL = REACT_APP_API;
+
 export function getDogs() {
   return async function (dispatch) {
     try {
-      var json = await axios.get(`${REACT_APP_API}/dogs`);
+      var json = await axios.get(`/dogs`);
       return dispatch({
         type: "GET_DOGS",
         payload: json.data,
@@ -19,7 +21,7 @@ export function getDogs() {
 export function getDogsByName(name) {
   return async function (dispatch) {
     try {
-      var json = await axios.get(`${REACT_APP_API}/dogs?name=${name}`);
+      var json = await axios.get(`/dogs?name=${name}`);
       return dispatch({
         type: "GET_DOGS_NAMES",
         payload: json.data,
@@ -33,7 +35,7 @@ export function getDogsByName(name) {
 export function getTemperaments() {
   return async function (dispatch) {
     try {
-      var json = await axios.get(`${REACT_APP_API}/temperaments`);
+      var json = await axios.get(`/temperaments`);
       return dispatch({
         type: "GET_TEMPERAMENTS",
         payload: json.data,
@@ -46,7 +48,7 @@ export function getTemperaments() {
 
 export function postDog(payload) {
   return async function () {
-    const json = await axios.post(`${REACT_APP_API}/dogs`, payload);
+    const json = await axios.post(`/dogs`, payload);
     return json;
   };
 }
@@ -82,7 +84,7 @@ export function filterDogsByTemperament(payload) {
 export function getDetails(id) {
   return async function (dispatch) {
     try {
-      var json = await axios.get(`${REACT_APP_API}/dogs/${id}`);
+      var json = await axios.get(`/dogs/${id}`);
       return dispatch({
         type: "GET_BY_ID",
         payload: json.data[0],
@@ -96,7 +98,7 @@ export function getDetails(id) {
 export function addFavorite(id) {
   return async function (dispatch) {
     try {
-      var json = await axios.get(`${REACT_APP_API}/dogs/${id}`);
+      var json = await axios.get(`/dogs/${id}`);
       return dispatch({
         type: "ADD_FAVORITE",
         payload: json.data[0],

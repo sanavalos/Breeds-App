@@ -13,7 +13,11 @@ Another feature is the creation of a breed through a form that must be completed
 
 ### Tips
 
-To make this app work in your pc, you will have to create an .env document and set your own DB_USER, DB_PASSWORD and DB_HOST.
+To make this app work locally, you have to have run the script `npm start` in both folders (API and CLIENT).<br/>
+Before that you will have to create an .env document in `API` folder and set the next environment variables:<br/>
+DB_USER, DB_PASSWORD, DB_HOST, DB_PORT, PORT, DB_NAME and DB_DIALECT=postgres<br/><br/>
+Also, you have to do the same thing but in `CLIENT` folder with the following environment variable:<br/>
+REACT_APP_API=http://localhost:3001
 
 ### Technologies
 
