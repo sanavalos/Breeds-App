@@ -14,7 +14,7 @@ Another feature is the creation of a breed through a form that must be completed
 ### Tips
 
 To make this app work locally, you have to have run the script `npm start` in both folders (API and CLIENT).<br/>
-Before that you will have to create an .env document in `API` folder and set the next environment variables:<br/>
+Before that you will have to create a .env document in `API` folder and set the next environment variables:<br/>
 DB_USER, DB_PASSWORD, DB_HOST, DB_PORT, PORT, DB_NAME and DB_DIALECT=postgres<br/><br/>
 Also, you have to do the same thing but in `CLIENT` folder with the following environment variable:<br/>
 REACT_APP_API=http://localhost:3001
@@ -30,5 +30,8 @@ This app was coded with `JavaScript` and developed with:
 - [React JS](https://reactjs.org)
 - [Redux](https://redux.js.org)
 - [Styled-components](https://styled-components.com)
+
+### Deploy
+Vercel: https://breeds-app-sanavalos.vercel.app/home
 
 _made by sanavalos_
